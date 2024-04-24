@@ -5,7 +5,6 @@ interface Props {
 }
 
 function Server({ children }: Props) {
-  console.log('Server Component');
   return (
     <div>
       <span>Server Component</span>

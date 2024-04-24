@@ -6,8 +6,6 @@ interface Props {
 }
 
 function ServerCopy({ children }: Props) {
-  console.log('Server Copy Component');
-  console.log(headers());
   return (
     <div>
       <span>ServerCopy Component</span>

@@ -7,8 +7,6 @@ interface Props {
 }
 
 function Client({ children }: Props) {
-  console.log('Client Component');
-
   return (
     <div>
       <span>Client Component</span>
