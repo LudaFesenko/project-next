@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../components/Header';
-import ToolBar from '../components/ToolBar';
-import AddCompanyButton from '../components/AddCompanyButton';
-import SearchInput from '../components/SearchInput';
-import CompanyTable from '../components/CompanyTable';
-import CompanyRow from '../components/CompanyRow';
-import { Status } from '../components/StatusLabel';
+import Header from '../../components/Header';
+import ToolBar from '../../components/ToolBar';
+import AddCompanyButton from '../../components/AddCompanyButton';
+import SearchInput from '../../components/SearchInput';
+import CompanyTable from '../../components/CompanyTable';
+import CompanyRow from '../../components/CompanyRow';
+import { Status } from '../../components/StatusLabel';
 
 interface Props {}
 
