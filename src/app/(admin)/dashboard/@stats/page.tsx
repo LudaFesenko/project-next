@@ -1,6 +1,7 @@
 import StatCard, { TypeCard } from '@/app/components/StatCard';
 
 import { getSummaryStats } from '@/lib/api';
+import Link from 'next/link';
 import React from 'react';
 
 interface Props {}
@@ -17,14 +18,15 @@ export default async function Page({}: Props) {
   return (
     <div className="grid grid-cols-12 gap-5">
       {(Object.keys(labelByStat) as (keyof typeof data)[]).map((key) => {
+        console.log(key);
         return (
-          <div key={key} className="col-span-3">
+          <Link href={`/dashboard/${key}`} key={key} className="col-span-3">
             <StatCard
               label={labelByStat[key]}
               counter={data[key]}
               type={TypeCard.Gradient}
             />
-          </div>
+          </Link>
         );
       })}
     </div>

@@ -1,4 +1,5 @@
 import DashboardCard from '@/app/components/DashboardCard';
+import MagicButton from '@/app/components/MagicButton';
 import SummaryTable from '@/app/components/SummaryTable';
 import SummaryTableCell from '@/app/components/SummaryTableCell';
 import SummaryTableHeader from '@/app/components/SummaryTableHeader';
@@ -8,10 +9,21 @@ import React from 'react';
 interface Props {}
 
 export default async function Page({}: Props) {
-  const data = await getSummarySales();
+  const data = await new Promise((res) => {
+    setTimeout(() => {
+      res(getSummarySales());
+    }, 4000);
+  });
 
   return (
-    <DashboardCard label="Sales details">
+    <DashboardCard
+      label={
+        <>
+          Sales details
+          <MagicButton />
+        </>
+      }
+    >
       <SummaryTable
         header={
           <>
