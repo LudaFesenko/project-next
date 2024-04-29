@@ -16,14 +16,7 @@ export default async function Page({}: Props) {
   });
 
   return (
-    <DashboardCard
-      label={
-        <>
-          Sales details
-          <MagicButton />
-        </>
-      }
-    >
+    <DashboardCard label="Sales details">
       <SummaryTable
         header={
           <>

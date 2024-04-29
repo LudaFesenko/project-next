@@ -18,7 +18,6 @@ export default async function Page({}: Props) {
   return (
     <div className="grid grid-cols-12 gap-5">
       {(Object.keys(labelByStat) as (keyof typeof data)[]).map((key) => {
-        console.log(key);
         return (
           <Link href={`/dashboard/${key}`} key={key} className="col-span-3">
             <StatCard
