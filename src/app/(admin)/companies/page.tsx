@@ -1,23 +1,23 @@
 import React from 'react';
-
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
 import CompanyTable from '../../components/CompanyTable';
-import CompanyRow from '../../components/CompanyRow';
-import { Status } from '../../components/StatusLabel';
+import getQueryClient from '@/lib/utils/getQueryClient';
+import { getCompanies } from '@/lib/api';
 
-interface Props {}
+export default async function Page() {
+  const queryClient = getQueryClient();
 
-export default function Page({}: Props) {
+  await queryClient.prefetchQuery({
+    queryKey: ['companies'],
+    queryFn: () => getCompanies({ cache: 'no-store' }),
+    staleTime: 10 * 1000,
+  });
+
+  const dehydrateState = dehydrate(queryClient);
+
   return (
-    <CompanyTable>
-      <CompanyRow
-        category="Products"
-        company="Costco Wholesale"
-        id={1}
-        status={Status.Active}
-        promotions={true}
-        country="USA"
-        joinedDate="02.09.2023"
-      />
-    </CompanyTable>
+    <HydrationBoundary state={dehydrateState}>
+      <CompanyTable />
+    </HydrationBoundary>
   );
 }
