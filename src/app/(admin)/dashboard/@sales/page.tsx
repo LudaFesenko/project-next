@@ -9,11 +9,7 @@ import React from 'react';
 interface Props {}
 
 export default async function Page({}: Props) {
-  const data = await new Promise((res) => {
-    setTimeout(() => {
-      res(getSummarySales());
-    }, 4000);
-  });
+  const data = await getSummarySales();
 
   return (
     <DashboardCard label="Sales details">
@@ -26,7 +22,7 @@ export default async function Page({}: Props) {
           </>
         }
       >
-        {data.map(({ companyId, companyTitle, sold, income }) => {
+        {data?.map(({ companyId, companyTitle, sold, income }) => {
           return (
             <tr key={companyId}>
               <SummaryTableCell>{companyTitle}</SummaryTableCell>

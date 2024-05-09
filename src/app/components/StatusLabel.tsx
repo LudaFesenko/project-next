@@ -5,16 +5,26 @@ import { CompanyStatus } from '@/lib/api';
 interface Props {
   status: CompanyStatus;
   disabled?: boolean;
+  styled?: boolean;
 }
 
-export default function StatusLabel({ status, disabled }: Props) {
-  const labelByStatus = {
-    [CompanyStatus.Active]: 'Active',
-    [CompanyStatus.NotActive]: 'Not active',
-    [CompanyStatus.Pending]: 'Pending',
-    [CompanyStatus.Suspended]: 'Suspended',
-  };
+const labelByStatus = {
+  [CompanyStatus.Active]: 'Active',
+  [CompanyStatus.NotActive]: 'Not active',
+  [CompanyStatus.Pending]: 'Pending',
+  [CompanyStatus.Suspended]: 'Suspended',
+};
 
+export default function StatusLabel({
+  status,
+  disabled,
+  styled = true,
+}: Props) {
+  const label = labelByStatus[status];
+
+  if (!styled) {
+    return label;
+  }
   return (
     <div
       className={clsx(
@@ -32,7 +42,7 @@ export default function StatusLabel({ status, disabled }: Props) {
     >
       <div className="w-1 h-1 rounded-full mr-2 bg-current" />
 
-      {labelByStatus[status]}
+      {label}
     </div>
   );
 }

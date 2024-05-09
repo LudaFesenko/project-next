@@ -12,7 +12,9 @@ export default function AddPromotionButton({ companyId }: Props) {
 
   return (
     <Button
-      onClick={() => router.push(`/companies/${companyId}/new-promotion`)}
+      onClick={() =>
+        router.push(`/companies/${companyId}/new-promotion`, { scroll: false })
+      }
     >
       Add Promotion
     </Button>
